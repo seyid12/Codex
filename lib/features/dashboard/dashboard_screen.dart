@@ -115,6 +115,11 @@ class DashboardScreen extends ConsumerWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.push('/teacher-panel'),
+        backgroundColor: const Color(0xFF00F0FF),
+        child: const Icon(Icons.add, color: Colors.black, size: 28),
+      ),
     );
   }
 }

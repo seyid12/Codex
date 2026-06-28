@@ -109,11 +109,13 @@ class _FlashcardScreenState extends State<FlashcardScreen> with SingleTickerProv
   Widget _buildFront() {
     return Card(
       child: Center(
-        padding: const EdgeInsets.all(24.0),
-        child: Text(
-          widget.card.question,
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Text(
+            widget.card.question,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );
@@ -123,26 +125,28 @@ class _FlashcardScreenState extends State<FlashcardScreen> with SingleTickerProv
     return Card(
       color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
       child: Center(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              widget.card.answer,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.greenAccent),
-            ),
-            if (widget.card.mnemonic.isNotEmpty) ...[
-              const SizedBox(height: 32),
-              const Icon(Icons.lightbulb, color: Colors.yellow, size: 32),
-              const SizedBox(height: 8),
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Text(
-                widget.card.mnemonic,
+                widget.card.answer,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic, color: Colors.white70),
+                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.greenAccent),
               ),
+              if (widget.card.mnemonic.isNotEmpty) ...[
+                const SizedBox(height: 32),
+                const Icon(Icons.lightbulb, color: Colors.yellow, size: 32),
+                const SizedBox(height: 8),
+                Text(
+                  widget.card.mnemonic,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 16, fontStyle: FontStyle.italic, color: Colors.white70),
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

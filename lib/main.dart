@@ -8,6 +8,7 @@ import 'core/theme/app_theme.dart';
 import 'features/auth/auth_screen.dart';
 import 'features/dashboard/dashboard_screen.dart';
 import 'features/study_modes/presentation/study_wrapper_screen.dart';
+import 'features/admin/presentation/teacher_panel_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/dashboard',
         builder: (context, state) => const DashboardScreen(),
+      ),
+      GoRoute(
+        path: '/teacher-panel',
+        builder: (context, state) => const TeacherPanelScreen(),
       ),
       GoRoute(
         path: '/study/:deckId',

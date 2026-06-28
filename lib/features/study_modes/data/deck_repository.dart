@@ -77,4 +77,25 @@ class DeckRepository {
       return [];
     }
   }
+
+  Future<String> createDeck(DeckModel deck) async {
+    try {
+      final docRef = await _firestore.collection('decks').add(deck.toMap());
+      return docRef.id;
+    } catch (e) {
+      throw Exception('Deste oluşturulurken hata oluştu: $e');
+    }
+  }
+
+  Future<void> addCardToDeck(String deckId, CardModel card) async {
+    try {
+      await _firestore
+          .collection('decks')
+          .doc(deckId)
+          .collection('cards')
+          .add(card.toMap());
+    } catch (e) {
+      throw Exception('Soru eklenirken hata oluştu: $e');
+    }
+  }
 }
